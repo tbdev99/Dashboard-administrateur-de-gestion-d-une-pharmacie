@@ -1,0 +1,28 @@
+
+<thead>
+<tr>
+    <th>Id</th>
+    <th>Quantite</th>
+    <th>Create_at</th>
+    <th>PrixTotal</th>
+    <th>actions</th>
+</tr>
+</thead>
+<tbody>
+{% for achat in achats %}
+    <tr>
+        <td>{{ achat.id }}</td>
+        <td>{{ achat.quantite }}</td>
+        <td>{{ achat.createAt ? achat.createAt|date('Y-m-d') : '' }}</td>
+        <td>{{ achat.prixTotal }}</td>
+        <td>
+            <a href="{{ path('achat_show', {'id': achat.id}) }}">show</a>
+            <a href="{{ path('achat_edit', {'id': achat.id}) }}">edit</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="5">no records found</td>
+    </tr>
+{% endfor %}
+</tbody>
